@@ -46,7 +46,6 @@ pipeline{
           }
   stage("deployment on tomcat"){
 steps{
-
 sh "sudo mv /var/lib/jenkins/workspace/addressbookdeployment/target/addressbook.war /opt/apache-
 tomcat-8.5.100/webapps/"
 
