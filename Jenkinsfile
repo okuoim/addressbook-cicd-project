@@ -44,13 +44,7 @@ pipeline{
                   sh 'mvn package'
               }
           }
-  stage("deployment on tomcat"){
-steps{
-sh "mv /var/lib/jenkins/workspace/addressbookdeployment/target/addressbook.war /opt/apache-
-tomcat-8.5.100/webapps/"
 
-      }
-    }
             
   }
 }
