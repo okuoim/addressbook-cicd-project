@@ -1,0 +1,30 @@
+pipeline{
+agent any
+stages{
+stage("git checkout"){
+steps{
+echo "starting with git checkout"
+git url: "https://github.com/okuoim/addressbook-cicd-project"
+echo "git checkout done"
+}
+}
+stage("compile the code"){
+steps{
+echo 'compiling is starting'
+sh "mvn compile"
+}
+}
+stage("testing the code"){
+steps{
+echo "testing to be started"
+sh "mvn test"
+}
+
+}
+stage("qa the code"){
+steps{
+echo "qa to be started"
+sh "mvn checkstyle:checkstyle"
+recordIssues sourceCodeRetention: 'LAST_BUILD', tools: [checkStyle()]
+}
+}
